@@ -387,16 +387,26 @@ name: {
 部分 Windows 环境下 `git push` 会**静默失败**（exit 128、无任何输出），排查成本极高。本仓库提供一个基于 GitHub REST API 的推送脚本作为替代：
 
 ```powershell
-# 预览将要上传的文件
+# 预览将要上传的文件（必做，确认无敏感文件）
 powershell -File tools\push-via-api.ps1 -DryRun
 
-# 实际推送
-powershell -File tools\push-via-api.ps1 -Message "feat: 新增字段同义词"
+# 正式推送：所有变更合并为一个 commit
+powershell -File tools\push-via-api.ps1
+
+# 新仓库首次发布：重建为单个干净的根提交
+powershell -File tools\push-via-api.ps1 -Squash
+
+# 自定义 commit message（从 UTF-8 文件读取，避免中文丢失）
+powershell -File tools\push-via-api.ps1 -MessageFile .commitmsg.txt
 ```
 
-前置条件：已安装 `gh`（`winget install GitHub.cli`）并完成 `gh auth login`。
+前置条件：已安装 `gh`（`winget install --id GitHub.cli -e`）并完成 `gh auth login`。
 
-该脚本会自动排除 `resume-data.json` 等含个人信息的文件，重复执行相同内容不会产生多余 commit。
+**注意事项**：
+
+- 脚本默认 message 写在文件内部。⚠️ **不要用 `-Message "中文内容"`** —— PowerShell 5.1 把含中文的命令行参数传给 `.ps1` 时会替换成 `?`，远端 commit message 会变乱码。请改用 `-MessageFile`。
+- 脚本会自动排除 `resume-data.json` 等含个人信息的文件。
+- ⚠️ `tools/push-via-api.ps1` **必须保存为 UTF-8 with BOM**。无 BOM 的 UTF-8 文件会被 PowerShell 5.1 按 GBK 解码，中文注释乱码后破坏脚本词法分析（表现为脚本把自己的源码当字符串回显、逻辑完全不执行）。
 
 ## 十三、贡献指南
 
