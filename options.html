@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>简历飞填 · 选项</title>
+<link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">🚀</div>
+        <div class="logo-text">
+          <div class="logo-name">简历飞填</div>
+          <div class="logo-sub">本地简历管理</div>
+        </div>
+      </div>
+
+      <nav class="nav" id="nav">
+        <!-- 动态生成 -->
+      </nav>
+
+      <div class="sidebar-foot">
+        <button class="btn-text" id="btn-import">📥 导入</button>
+        <button class="btn-text" id="btn-export">📤 导出</button>
+        <button class="btn-text" id="btn-clear">🗑 清空</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="main-header">
+        <div class="main-header-left">
+          <h1 class="page-title" id="page-title">个人信息</h1>
+          <p class="page-sub" id="page-sub">基础资料,用于自动填充</p>
+        </div>
+        <div class="main-header-right">
+          <button class="btn btn-secondary" id="btn-reset">放弃修改</button>
+          <button class="btn btn-primary" id="btn-save">保存</button>
+        </div>
+      </header>
+
+      <div class="content" id="content">
+        <!-- 动态生成表单 -->
+      </div>
+
+      <footer class="main-foot">
+        <span>提示: 数据仅存本地(chrome.storage.local),不上传服务器</span>
+        <span id="save-status"></span>
+      </footer>
+    </main>
+  </div>
+
+  <input type="file" id="file-import" accept=".json" style="display:none">
+
+  <script src="lib/resume-schema.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

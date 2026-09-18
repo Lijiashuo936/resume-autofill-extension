@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>简历飞填 · 本地测试页(模拟网申表单)</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f5f6f8; color: #1f2937; margin: 0; padding: 40px 20px 200px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 6px; }
+  .sub { color: #6b7280; font-size: 13px; margin-bottom: 24px; }
+  .card {
+    background: #fff; border-radius: 12px; padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 18px;
+  }
+  h2 { font-size: 16px; margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid #eef0f3; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .field label { font-size: 13px; color: #374151; font-weight: 500; }
+  .req::after { content: " *"; color: #ef4444; }
+  input, select, textarea {
+    padding: 9px 12px; border: 1px solid #d7dbe0; border-radius: 6px;
+    font-size: 13px; font-family: inherit; background: #fff;
+  }
+  input:focus, select:focus, textarea:focus { outline: 0; border-color: #2563eb; }
+  textarea { min-height: 80px; resize: vertical; }
+  .hint { font-size: 11px; color: #9ca3af; }
+  .style-b { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .style-b > span.lb { width: 110px; font-size: 13px; color: #374151; flex-shrink: 0; }
+  .style-b input, .style-b select { flex: 1; }
+  .note { background: #eff6ff; border-left: 3px solid #2563eb; padding: 12px 16px; border-radius: 6px; font-size: 12px; color: #1e40af; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>简历飞填 · 本地测试页</h1>
+  <div class="sub">模拟企业招聘网申表单,用于验证插件能否正确识别并填充。用 Edge 打开本文件,点右下角悬浮按钮。</div>
+
+  <div class="card">
+    <h2>基本信息</h2>
+    <div class="row">
+      <div class="field">
+        <label for="realname" class="req">姓名</label>
+        <input id="realname" name="realname" type="text" placeholder="请填写有效证件上的全名">
+      </div>
+      <div class="field">
+        <label for="englishname">英文名</label>
+        <input id="englishname" name="englishName" type="text" placeholder="English Name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="sex">性别</label>
+        <select id="sex" name="gender">
+          <option value="">请选择</option>
+          <option>男</option>
+          <option>女</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="birth">出生日期</label>
+        <input id="birth" name="birthday" type="date">
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="mobile" class="req">手机号码</label>
+        <input id="mobile" name="mobile" type="tel" placeholder="请输入手机号">
+      </div>
+      <div class="field">
+        <label for="mail" class="req">电子邮箱</label>
+        <input id="mail" name="email" type="email" placeholder="example@mail.com">
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="city">当前居住省/市</label>
+        <input id="city" name="currentCity" type="text" placeholder="省/市">
+      </div>
+      <div class="field">
+        <label for="hometown">籍贯</label>
+        <input id="hometown" name="hometown" type="text" placeholder="如:河北邯郸">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>政治面貌与求职意向</h2>
+    <div class="row">
+      <div class="field">
+        <label for="political">政治面貌</label>
+        <select id="political" name="politicalStatus">
+          <option value="">请选择</option>
+          <option>群众</option>
+          <option>共青团员</option>
+          <option>中共党员</option>
+          <option>中共预备党员</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="jobtype">工作类型</label>
+        <select id="jobtype" name="jobType">
+          <option value="">请选择</option>
+          <option>全职</option>
+          <option>实习</option>
+          <option>校招</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="expectpos">期望岗位</label>
+        <input id="expectpos" name="expectPosition" type="text" placeholder="如:数据分析师">
+      </div>
+      <div class="field">
+        <label for="expectcity">期望城市</label>
+        <input id="expectcity" name="expectCity" type="text" placeholder="如:天津">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>教育经历(第二种 DOM 结构:左侧文字 + 右侧控件)</h2>
+    <div class="style-b">
+      <span class="lb">毕业院校</span>
+      <input name="school" type="text" placeholder="学校名称">
+    </div>
+    <div class="style-b">
+      <span class="lb">专业</span>
+      <input name="major" type="text" placeholder="专业名称">
+    </div>
+    <div class="style-b">
+      <span class="lb">学历</span>
+      <select name="degree">
+        <option value="">请选择</option>
+        <option>大专</option>
+        <option>本科</option>
+        <option>硕士</option>
+        <option>博士</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>其他(placeholder 命名方式)</h2>
+    <div class="row">
+      <div class="field">
+        <input type="text" placeholder="请输入大学GPA或绩点">
+      </div>
+      <div class="field">
+        <input type="text" placeholder="请输入专业排名">
+      </div>
+    </div>
+    <div class="field">
+      <label for="intro">自我介绍</label>
+      <textarea id="intro" name="selfIntroduction" placeholder="一句话介绍自己"></textarea>
+    </div>
+    <div class="field">
+      <label for="skill">IT技能/技能特长</label>
+      <textarea id="skill" name="skills" placeholder="如:Python、SQL、Linux"></textarea>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>测试要点</b><br>
+    1. 点右下角「一键填简历」→ 应看到识别字段列表(含路径、命中词、置信度)。<br>
+    2. 未导入简历时,「可填写」会是 0,并提示去编辑简历 —— 这是正常的。<br>
+    3. 导入 <code>resume-data.json</code> 后再扫描,应能填入姓名/手机/邮箱/学校等。<br>
+    4. 点「确认填写」→ 观察上方表单是否被填上,并出现成功/失败明细。
+  </div>
+</div>
+</body>
+</html>

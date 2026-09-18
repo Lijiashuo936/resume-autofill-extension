@@ -1,0 +1,337 @@
+/* === 简历飞填 Content Script Styles === */
+
+#feitian-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2147483647;
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  color: #fff;
+  border-radius: 28px;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  box-shadow: 0 6px 20px rgba(37,99,235,0.4), 0 0 0 1px rgba(255,255,255,0.1) inset;
+  transition: transform 0.15s, box-shadow 0.15s;
+  user-select: none;
+}
+#feitian-fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37,99,235,0.55);
+}
+.feitian-fab-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.feitian-fab-icon { font-size: 18px; }
+.feitian-fab-text { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
+
+#feitian-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 80px;
+  width: 380px;
+  max-height: 75vh;
+  z-index: 2147483647;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.05);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #1f2937;
+}
+
+.feitian-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  color: #fff;
+}
+.feitian-header-title {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+.feitian-header-actions { display: flex; gap: 8px; }
+.feitian-icon-btn {
+  background: rgba(255,255,255,0.2);
+  border: 0;
+  color: #fff;
+  width: 26px; height: 26px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+.feitian-icon-btn:hover { background: rgba(255,255,255,0.35); }
+
+.feitian-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.feitian-step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.feitian-step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+  text-align: center;
+  padding: 30px 0 8px;
+}
+.feitian-spinner {
+  width: 40px; height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: feitian-spin 0.9s linear infinite;
+  margin: 0 auto;
+}
+@keyframes feitian-spin {
+  to { transform: rotate(360deg); }
+}
+
+.feitian-summary { margin-bottom: 4px; }
+.feitian-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+.feitian-stat {
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+  border: 1px solid #f3f4f6;
+}
+.feitian-stat-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2563eb;
+}
+.feitian-stat-label {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* === v1.1 新增:诊断信息 === */
+.feitian-diag {
+  font-size: 11px;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.6;
+  word-break: break-all;
+}
+.feitian-scan-meta {
+  font-size: 11px;
+  color: #9ca3af;
+  text-align: center;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #e5e7eb;
+}
+.feitian-error-box { padding: 4px 0; }
+.feitian-diag-pre {
+  background: #1f2937;
+  color: #e5e7eb;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 12px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+
+.feitian-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: #4b5563;
+  padding: 8px 0;
+}
+.feitian-controls label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+
+.feitian-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.feitian-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.feitian-item:hover { background: #f3f4f6; }
+.feitian-item input[type=checkbox] {
+  margin-top: 3px;
+  accent-color: #2563eb;
+}
+.feitian-item-body { flex: 1; min-width: 0; }
+.feitian-item-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.feitian-item-path {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 13px;
+}
+.feitian-item-synonym {
+  color: #6b7280;
+  font-size: 11px;
+}
+.feitian-item-conf {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #f3f4f6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.feitian-item-value {
+  font-size: 12px;
+  color: #4b5563;
+  word-break: break-all;
+  max-height: 40px;
+  overflow-y: auto;
+}
+.feitian-empty-item { opacity: 0.6; }
+
+.feitian-empty {
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+  padding: 24px 12px;
+}
+.feitian-empty a { color: #2563eb; text-decoration: none; }
+.feitian-empty a:hover { text-decoration: underline; }
+
+.feitian-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.feitian-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.1s;
+}
+.feitian-btn:active { transform: scale(0.98); }
+.feitian-btn-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+}
+.feitian-btn-primary:hover { box-shadow: 0 6px 18px rgba(37,99,235,0.45); }
+.feitian-btn-secondary {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+.feitian-btn-secondary:hover { background: #e5e7eb; }
+
+/* === done step === */
+.feitian-result-banner {
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+}
+.feitian-result-all {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: #065f46;
+}
+.feitian-result-partial {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+}
+.feitian-result-none {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+}
+.feitian-result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.feitian-result-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  background: #f9fafb;
+}
+.feitian-result-item.filled { background: #ecfdf5; }
+.feitian-result-item.failed { background: #fef2f2; }
+.feitian-result-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #9ca3af;
+}
+.filled .feitian-result-dot { background: #10b981; }
+.failed .feitian-result-dot { background: #ef4444; }
+.feitian-result-path {
+  font-weight: 600;
+  color: #1f2937;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+}
+.feitian-result-msg {
+  color: #6b7280;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 让滚动条漂亮一点 */
+.feitian-list::-webkit-scrollbar,
+.feitian-result-list::-webkit-scrollbar {
+  width: 6px;
+}
+.feitian-list::-webkit-scrollbar-thumb,
+.feitian-result-list::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}

@@ -1,0 +1,80 @@
+{
+  "_comment": "示例简历 — 全部为虚构数据，仅用于演示导入格式。请勿在此填写真实个人信息。",
+  "personal": {
+    "name": "张小飞",
+    "englishName": "Zhang Xiaofei",
+    "gender": "男",
+    "birthDate": "2000-01-01",
+    "phone": "138-0000-0000",
+    "email": "zhangxiaofei@example.com",
+    "ethnicity": "汉族",
+    "political": "共青团员",
+    "maritalStatus": "未婚",
+    "hukouLocation": "示例省示例市",
+    "currentCity": "示例市",
+    "height": "175",
+    "weight": "65",
+    "idCard": ""
+  },
+  "jobIntention": {
+    "desiredPosition": "数据分析师",
+    "desiredIndustry": "互联网",
+    "desiredCity": "不限",
+    "desiredSalary": "面议",
+    "availableDate": "一周内到岗",
+    "jobType": "实习"
+  },
+  "education": [
+    {
+      "school": "示例大学",
+      "major": "计算机科学与技术",
+      "degree": "本科",
+      "startDate": "2019-09",
+      "endDate": "2023-06",
+      "gpa": "3.5",
+      "ranking": "专业前 20%",
+      "description": "核心课程：数据结构、数据库原理、机器学习、操作系统、计算机网络"
+    }
+  ],
+  "experience": [
+    {
+      "company": "示例科技有限公司",
+      "position": "数据分析实习生",
+      "startDate": "2022-07",
+      "endDate": "2022-09",
+      "location": "示例市",
+      "description": "• 搭建业务日报自动化报表，覆盖 10+ 核心指标\n• 使用 SQL 完成用户行为漏斗分析，定位转化流失环节\n• 输出专题分析报告，支撑运营策略调整"
+    }
+  ],
+  "projects": [
+    {
+      "name": "电商用户行为分析",
+      "role": "独立完成",
+      "startDate": "2022-10",
+      "endDate": "2022-12",
+      "techStack": "Python、Pandas、MySQL、Matplotlib",
+      "description": "对 10 万条订单数据完成清洗与建模，输出 RFM 用户分层与复购预测，识别高价值用户群并给出运营建议。",
+      "link": ""
+    }
+  ],
+  "skills": [
+    { "name": "Python(Pandas/NumPy)", "level": "熟练" },
+    { "name": "SQL(MySQL)", "level": "熟练" },
+    { "name": "数据可视化", "level": "掌握" },
+    { "name": "Linux", "level": "掌握" }
+  ],
+  "awards": [
+    { "name": "校级一等奖学金", "level": "校级", "date": "2021", "issuer": "示例大学" }
+  ],
+  "certificates": [
+    { "name": "全国计算机等级考试二级", "date": "2021" }
+  ],
+  "languages": [
+    { "language": "英语", "level": "CET-6" }
+  ],
+  "selfIntro": {
+    "summary": "注重数据背后的业务逻辑，习惯用数据验证假设，具备较强的自学与落地能力。",
+    "hobbies": "跑步、阅读",
+    "strengths": "逻辑清晰、执行力强、善于沟通"
+  }
+}

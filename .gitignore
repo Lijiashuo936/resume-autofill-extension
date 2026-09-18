@@ -1,0 +1,36 @@
+# ===== 隐私红线：真实简历数据绝不入库 =====
+resume-data.json
+resume-data*.json
+!examples/resume-sample.json
+*.resume.local.json
+
+# 提取出的简历文本（可能含个人信息）
+resume-extracted.md
+resume-*.md
+*.extracted.txt
+
+# ===== 依赖 =====
+node_modules/
+package-lock.json
+package.json
+
+# ===== 构建产物 / 打包 =====
+*.zip
+*.crx
+*.pem
+dist/
+build/
+release/
+
+# ===== 系统与编辑器 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# ===== 日志与临时文件 =====
+*.log
+npm-debug.log*
+*.tmp

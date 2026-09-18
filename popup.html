@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>简历飞填</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+    <header class="popup-header">
+      <div class="popup-logo">🚀</div>
+      <div class="popup-title">
+        <div class="popup-title-main">简历飞填</div>
+        <div class="popup-title-sub">AI 一键填网申 · 本地版</div>
+      </div>
+    </header>
+
+    <section class="popup-status" id="popup-status">
+      <div class="popup-status-loading">
+        <div class="popup-spinner"></div>
+        <span>正在检测页面…</span>
+      </div>
+    </section>
+
+    <section class="popup-actions" id="popup-actions" style="display:none">
+      <button class="popup-btn popup-btn-primary" id="popup-btn-fill">
+        <span class="popup-btn-icon">✨</span>
+        <span class="popup-btn-text">开始填写</span>
+      </button>
+      <button class="popup-btn popup-btn-secondary" id="popup-btn-edit">
+        <span class="popup-btn-icon">📝</span>
+        <span class="popup-btn-text">编辑简历</span>
+      </button>
+      <button class="popup-btn popup-btn-secondary" id="popup-btn-options">
+        <span class="popup-btn-icon">⚙️</span>
+        <span class="popup-btn-text">设置</span>
+      </button>
+    </section>
+
+    <section class="popup-history" id="popup-history" style="display:none">
+      <div class="popup-section-title">
+        <span>最近填写</span>
+        <a href="#" id="popup-clear-history">清空</a>
+      </div>
+      <div class="popup-history-list" id="popup-history-list"></div>
+    </section>
+
+    <footer class="popup-footer">
+      <span>v1.0.0 · 数据存本地</span>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
